@@ -44,8 +44,12 @@ def completeTask():
     print("")
     for (i,item) in enumerate(listoftasks, start=1):
         print(str(i) + '.', item)
-    delete = int(input("\nWhich task have you completed? "))
-    listoftasks.pop((delete-1))
+    try:
+        delete = int(input("\nWhich task have you completed? "))
+        listoftasks.pop((delete-1))
+        print("")
+    except:
+        print("\nInvalid input, please try again.\n")
     if not listoftasks:
         print("\nYou've completed all of your tasks!")
     else:
