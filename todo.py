@@ -2,6 +2,7 @@ from queue import Empty
 
 choice = str(input("Would you like to see your tasks 'S', add a task 'A', or check off a task? 'C' "))
 choice = choice.upper()
+choice = choice.replace(" ","")
 
 
 
@@ -13,6 +14,7 @@ numlist = []
 def returnMenu():
     choice = input("\nWould you like to see your tasks 'S', add a task 'A', or check off a task? 'C' ")
     choice = choice.upper()
+    choice = choice.replace(" ","")
     if choice == 'S':
         if not listoftasks:
             print("\nNo tasks added yet!")
