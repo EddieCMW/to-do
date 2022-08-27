@@ -16,7 +16,10 @@ def returnMenu():
     if choice == 'S':
         if not listoftasks:
             print("\nNo tasks added yet!")
-        showTasks()
+            showTasks()
+        else:
+            print("")
+            showTasks()
 
     if choice == 'A':
         addTask()
@@ -41,21 +44,27 @@ def addTask():
     returnMenu()
 
 def completeTask():
-    print("")
-    for (i,item) in enumerate(listoftasks, start=1):
-        print(str(i) + '.', item)
-    try:
-        delete = int(input("\nWhich task have you completed? "))
-        listoftasks.pop((delete-1))
-        print("")
-    except:
-        print("\nInvalid input, please try again.\n")
-    if not listoftasks:
-        print("\nYou've completed all of your tasks!")
-    else:
-        for (i,item) in enumerate(listoftasks, start=1):
-            print(str(i) + '.', item)
-    returnMenu()
+    while True:
+        if not listoftasks:
+            print("\nYou don't have any tasks to complete!")
+            returnMenu()
+            break
+        else:
+            print("")
+            for (i,item) in enumerate(listoftasks, start=1):
+                print(str(i) + '.', item)
+            try:
+                delete = int(input("\nWhich task have you completed? "))
+                listoftasks.pop((delete-1))
+                print("")
+            except:
+                print("\nInvalid input, please try again.\n")
+            if not listoftasks:
+                print("\nYou've completed all of your tasks!")
+            else:
+                for (i,item) in enumerate(listoftasks, start=1):
+                    print(str(i) + '.', item)
+            returnMenu()
 
 if choice == 'S':
     if not listoftasks:
